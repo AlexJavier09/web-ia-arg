@@ -1976,5 +1976,19 @@
             }
         });
     </script>
+<script>
+async function probarAPI() {
+  try {
+    const res = await fetch("/api/test"); 
+    const data = await res.json();
+    console.log("Respuesta del backend:", data);
+    document.body.insertAdjacentHTML("beforeend", `<pre>${JSON.stringify(data, null, 2)}</pre>`);
+  } catch (err) {
+    console.error("Error llamando API:", err);
+  }
+}
+probarAPI();
+</script>
+
 </body>
 </html>

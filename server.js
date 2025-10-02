@@ -52,4 +52,13 @@ app.get("/api/web_info_users_arg", async (req, res) => {
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+
+
+
+app.get("/api/test", (req, res) => {
+  res.json({ mensaje: "API funcionando a través de Nginx 🚀" });
+});
+
+});
