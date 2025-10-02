@@ -1,10 +1,8 @@
-# Etapa base con Node + Nginx
 FROM node:20-alpine
 
-# Instala nginx
+# Instala nginx (si lo usas en el mismo contenedor)
 RUN apk add --no-cache nginx
 
-# Directorios
 WORKDIR /app
 RUN mkdir -p /run/nginx /var/log/nginx /usr/share/nginx/html
 
@@ -19,12 +17,19 @@ COPY index.html /usr/share/nginx/html/
 # Copia nginx.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Script de arranque
+# Copia start.sh a la RAÍZ del contenedor
 COPY start.sh /start.sh
-RUN chmod +x /start.sh
 
-# Exponer HTTP
+# Normaliza finales de línea y da permisos de ejecución
+RUN sed -i 's/\r$//' /start.sh && chmod +x /start.sh
+
+# Diagnóstico: verifica que está ahí y ejecutable
+RUN ls -l /start.sh && head -n 3 /start.sh
+
 EXPOSE 80
 
-# Arranque
-CMD ["/start.sh"]
+# Opción A (recomendada): llama sh explícitamente (evita problemas de shebang/CRLF)
+CMD ["sh", "/start.sh"]
+
+# Opción B (si confías en el shebang):
+# CMD ["/start.sh"]
