@@ -1,5 +1,8 @@
 #!/bin/sh
+set -e
+
 # Arranca Nginx en background
 nginx
-# Arranca Node en foreground (mantiene vivo el contenedor)
+
+# Arranca tu app Node en primer plano
 exec node /app/server.js
