@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeVerse AI - Soluciones de Automatización Inteligente</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(99, 102, 241, 0.4);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(2n) {
+            background: rgba(139, 92, 246, 0.3);
+            animation-delay: -2s;
+            animation-duration: 8s;
+        }
+        
+        .particle:nth-child(3n) {
+            background: rgba(249, 115, 22, 0.3);
+            animation-delay: -4s;
+            animation-duration: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tech-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(249, 115, 22, 0.4);
+        }
+        
+        .orange-accent {
+            color: #f97316;
+        }
+        
+        .orange-bg {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+        
+        .orange-border {
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+        
+        .section-bg {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .number-highlight {
+            color: #f97316;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        .process-step {
+            position: relative;
+            padding: 2rem;
+            border-radius: 1rem;
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.1);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .metric-card {
+            background: rgba(15, 15, 35, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            border-color: rgba(249, 115, 22, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .country-card {
+            background: rgba(15, 15, 35, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .country-card:hover {
+            border-color: rgba(249, 115, 22, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(249, 115, 22, 0.6);
+            color: #f97316;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: #f97316;
+            color: #f97316;
+            text-decoration: none;
+        }
+        
+        .floating-element {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .tech-icon {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 1rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .benefit-card {
+            background: rgba(15, 15, 35, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: rgba(249, 115, 22, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .benefit-icon {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 1rem;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            background: rgba(249, 115, 22, 0.2);
+            border-color: rgba(249, 115, 22, 0.5);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #f97316;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #ea580c;
+        }
+
+        /* Calendar Styles */
+        .calendar {
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            color: #f97316;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav:hover {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: #f97316;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            color: #f97316;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .calendar-day.disabled {
+            color: #6b7280;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .calendar-day.disabled:hover {
+            border-color: rgba(99, 102, 241, 0.2);
+            background: transparent;
+        }
+
+        .calendar-day.selected {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            border-color: #f97316;
+        }
+
+        .calendar-day.today {
+            border-color: #f97316;
+            font-weight: 600;
+        }
+
+        /* Time Slots */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .time-slot {
+            padding: 0.75rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .time-slot:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .time-slot.selected {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            border-color: #f97316;
+        }
+
+        .time-slot.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            color: #6b7280;
+        }
+
+        .time-slot.disabled:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            background: transparent;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #f97316;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(15, 15, 35, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 0.5rem;
+            color: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #f97316;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .meeting-type-card {
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .meeting-type-card:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+            background: rgba(249, 115, 22, 0.05);
+        }
+
+        .meeting-type-card.selected {
+            border-color: #f97316;
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .meeting-type-card h4 {
+            margin-bottom: 0.5rem;
+            color: #f97316;
+            font-weight: 600;
+        }
+
+        .meeting-type-card p {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meeting-type-card .duration {
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+
+        /* Confirmation Styles */
+        .confirmation-card {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .confirmation-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(34, 197, 94, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+
+            .calendar-grid {
+                gap: 0.25rem;
+            }
+
+            .calendar-day, .time-slot {
+                font-size: 0.8rem;
+                padding: 0.5rem;
+            }
+
+            .time-slots {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 0.25rem;
+            }
+            .country-select {
+                appearance: none;      /* Oculta la flecha por defecto */
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                padding-right: 2rem;   /* Espacio para la flecha */
+                cursor: pointer !important; /* Forzamos la mano */
+                background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+                background-repeat: no-repeat;
+                background-position: right 0.5rem center;
+                background-size: 1rem;
+            }
+
+            /* Opcional: si el select está dentro de un contenedor, también forzar cursor */
+            .form-group select {
+                cursor: pointer !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="text-2xl font-bold">
+                        <span class="text-white">CODE</span><span class="gradient-text">VERSE</span>
+                    </div>
+                    <div class="text-sm text-gray-400">AI</div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-300 hover:text-orange-400 transition-colors">Inicio</a>
+                    <a href="#servicios" class="text-gray-300 hover:text-orange-400 transition-colors">Servicios</a>
+                    <a href="#proceso" class="text-gray-300 hover:text-orange-400 transition-colors">Proceso</a>
+                    <a href="#contacto" class="text-gray-300 hover:text-orange-400 transition-colors">Contacto</a>
+                    <a href="#sobre-nosotros" class="text-gray-300 hover:text-orange-400 transition-colors">Sobre Nosotros</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-400">ES</span>
+                    <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden mt-4 space-y-4 hidden">
+                <a href="#inicio" class="block text-gray-300 hover:text-orange-400 transition-colors">Inicio</a>
+                <a href="#servicios" class="block text-gray-300 hover:text-orange-400 transition-colors">Servicios</a>
+                <a href="#proceso" class="block text-gray-300 hover:text-orange-400 transition-colors">Proceso</a>
+                <a href="#contacto" class="block text-gray-300 hover:text-orange-400 transition-colors">Contacto</a>
+                <a href="#sobre-nosotros" class="block text-gray-300 hover:text-orange-400 transition-colors">Sobre Nosotros</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center relative">
+        <div class="tech-grid"></div>
+        <div class="tech-particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 0.5s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <!--
+                <div class="mb-6">
+                    <span class="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        Disponibilidad para nuevos proyectos
+                    </span>
+                </div>
+                -->
+                
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    La <span class="gradient-text">Inteligencia Artificial</span> al servicio de tu empresa
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Procesos más ágiles, equipos más libres y resultados más potentes.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button onclick="openSchedulingModal()" class="btn-primary">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Agendar Reunión Gratuita
+                    </button>
+                    <a href="#servicios" class="btn-secondary">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Conoce Más
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluciones para Empresas -->
+    <section id="servicios" class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Soluciones para <span class="gradient-text">Empresas</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Potencia tu negocio con nuestras soluciones de inteligencia artificial diseñadas para impulsar la eficiencia y la innovación.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <!-- Agentes de IA -->
+                <div class="card-hover glass-effect rounded-2xl p-8 floating-element">
+                    <div class="tech-icon w-16 h-16 mb-6">
+                        <i class="fas fa-robot text-2xl text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Agentes de IA</h3>
+                    <p class="text-gray-300 mb-6">
+                        Integra un 'empleado' digital experto, dedicado a un área clave de tu negocio.
+                    </p>
+                    <div class="space-y-3 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Desarrollamos agentes de inteligencia artificial adaptados específicamente a las necesidades de tu negocio</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Capaces de entender y resolver consultas complejas de forma natural</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Respuesta automática a consultas de clientes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Gestión documental sin intervención humana</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Aprendizaje continuo y adaptación</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Integración con sistemas existentes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automatizaciones -->
+                <div class="card-hover glass-effect rounded-2xl p-8 floating-element" style="animation-delay: 0.2s;">
+                    <div class="tech-icon w-16 h-16 mb-6">
+                        <i class="fas fa-cogs text-2xl text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Automatizaciones</h3>
+                    <p class="text-gray-300 mb-6">
+                        Flujos de trabajo sin límites. Deja que la tecnología se encargue del trabajo pesado.
+                    </p>
+                    <div class="space-y-3 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Identifica y automatiza procesos repetitivos en tu empresa</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Reduce errores y acelera la ejecución de tareas</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Integración entre aplicaciones y sistemas</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Conectamos con WhatsApp, Google Calendar, CRMs</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Flujos de trabajo personalizados</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Monitoreo y optimización continua</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soluciones a Medida -->
+                <div class="card-hover glass-effect rounded-2xl p-8 floating-element" style="animation-delay: 0.4s;">
+                    <div class="tech-icon w-16 h-16 mb-6">
+                        <i class="fas fa-puzzle-piece text-2xl text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Soluciones a Medida</h3>
+                    <p class="text-gray-300 mb-6">
+                        Flexibilidad total para tu negocio. Tu negocio es único, y tu IA también debe serlo.
+                    </p>
+                    <div class="space-y-3 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Análisis predictivo con modelos de IA avanzados</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Gestión inteligente de datos y bases de datos</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Desarrollo completamente personalizado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Arquitectura modular y escalable</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Adaptación a procesos específicos</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check orange-accent mr-2"></i>
+                            <span>Soporte y evolución continua</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beneficios Cuantificados -->
+            <!--
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="metric-card">
+                    <div class="text-4xl font-bold orange-accent mb-2">75%</div>
+                    <div class="text-gray-300">Ahorro de tiempo en tareas repetitivas</div>
+                </div>
+                <div class="metric-card">
+                    <div class="text-4xl font-bold orange-accent mb-2">40%</div>
+                    <div class="text-gray-300">Reducción en costos operativos</div>
+                </div>
+                <div class="metric-card">
+                    <div class="text-4xl font-bold orange-accent mb-2">60%</div>
+                    <div class="text-gray-300">Incremento en productividad</div>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- Beneficios de Nuestras Soluciones -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Beneficios de Nuestras <span class="gradient-text">Soluciones</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Transforma tu negocio con beneficios medibles y resultados garantizados que impactarán directamente en tu operación.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ahorro de Tiempo -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock text-2xl orange-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Ahorro de Tiempo</h3>
+                    <div class="text-3xl font-bold orange-accent mb-3">75%</div>
+                    <p class="text-gray-300 text-sm">
+                        Reduce hasta un 75% el tiempo dedicado a tareas repetitivas, liberando a tu equipo para enfocarse en actividades de mayor valor.
+                    </p>
+                </div>
+
+                <!-- Reducción de Costos -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign text-2xl orange-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reducción de Costos</h3>
+                    <div class="text-3xl font-bold orange-accent mb-3">40%</div>
+                    <p class="text-gray-300 text-sm">
+                        Ahorra hasta un 40% en costos operativos al automatizar procesos que normalmente requerirían múltiples recursos humanos.
+                    </p>
+                </div>
+
+                <!-- Aumento de Productividad -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line text-2xl orange-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Aumento de Productividad</h3>
+                    <div class="text-3xl font-bold orange-accent mb-3">60%</div>
+                    <p class="text-gray-300 text-sm">
+                        Incrementa la productividad en un 60% con sistemas que funcionan 24/7 sin interrupciones, errores ni tiempo de descanso.
+                    </p>
+                </div>
+
+                <!-- Mejor Experiencia del Cliente -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-smile text-2xl orange-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mejor Experiencia del Cliente</h3>
+                    <div class="text-3xl font-bold orange-accent mb-3">35%</div>
+                    <p class="text-gray-300 text-sm">
+                        Mejora la satisfacción del cliente en un 35% con respuestas inmediatas, personalizadas y consistentes a todas sus consultas.
+                    </p>
+                </div>
+
+                <!-- Análisis de Datos -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-bar text-2xl orange-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Análisis de Datos</h3>
+                    <p class="text-gray-300 text-sm">
+                        Obtén insights valiosos de tus datos con análisis avanzados que te permiten tomar mejores decisiones basadas en información real.
+                    </p>
+                </div>
+
+                <!-- Escalabilidad -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-expand-arrows-alt text-2xl orange-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Escalabilidad</h3>
+                    <p class="text-gray-300 text-sm">
+                        Escala tus operaciones sin aumentar proporcionalmente tus costos. Nuestras soluciones crecen con tu negocio.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo Trabajamos -->
+    <section id="proceso" class="py-20 section-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Cómo <span class="gradient-text">Trabajamos</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Proceso simple, resultados potentes. Metodología probada para transformar tu empresa.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Paso 1: Descubrimiento -->
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="text-2xl font-bold mb-4 mt-2">Descubrimiento</h3>
+                    <h4 class="text-lg orange-accent font-semibold mb-3">Análisis Profundo de tu Negocio</h4>
+                    <p class="text-gray-300 mb-4">
+                        En una primera reunión, evaluamos el funcionamiento actual de los procesos de tu empresa, 
+                        detectamos cuellos de botella y proponemos soluciones preliminares.
+                    </p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-start">
+                            <i class="fas fa-search orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Análisis profundo de procesos actuales</strong> - Mapeamos cada flujo de trabajo existente
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-exclamation-triangle orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Identificación de cuellos de botella específicos</strong> - Detectamos puntos críticos de ineficiencia
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-desktop orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Evaluación de sistemas existentes</strong> - Analizamos herramientas y plataformas actuales
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-sitemap orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Mapeo de flujos de trabajo</strong> - Documentamos procesos completos paso a paso
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-lightbulb orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Detección de oportunidades de automatización</strong> - Identificamos áreas de mayor impacto
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-stethoscope orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Diagnóstico de pain points operativos</strong> - Ubicamos problemas recurrentes y frustraciones del equipo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 2: Propuesta -->
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="text-2xl font-bold mb-4 mt-2">Propuesta Personalizada</h3>
+                    <h4 class="text-lg orange-accent font-semibold mb-3">Plan Técnico Detallado</h4>
+                    <p class="text-gray-300 mb-4">
+                        Te enviamos un plan detallado que incluye la descripción completa del proyecto, 
+                        el presupuesto desglosado y todos los requerimientos necesarios para su ejecución.
+                    </p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-start">
+                            <i class="fas fa-calendar-alt orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Plan técnico detallado con cronograma</strong> - Fases, hitos y tiempos de entrega específicos
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-calculator orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Presupuesto desglosado por fases</strong> - Inversión transparente para cada etapa del proyecto
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-file-code orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Especificaciones técnicas completas</strong> - Arquitectura, tecnologías y funcionalidades detalladas
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-chart-line orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>ROI proyectado y métricas de éxito</strong> - Retorno de inversión esperado y KPIs medibles
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 3: Desarrollo -->
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="text-2xl font-bold mb-4 mt-2">Desarrollo e Implementación</h3>
+                    <h4 class="text-lg orange-accent font-semibold mb-3">Construcción de tu Solución</h4>
+                    <p class="text-gray-300 mb-4">
+                        Una vez aprobado el plan, iniciamos el desarrollo y mantenemos al cliente informado 
+                        con actualizaciones periódicas durante todo el proceso.
+                    </p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-start">
+                            <i class="fas fa-sprint orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Metodología ágil con sprints</strong> - Desarrollo iterativo con entregas frecuentes
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-sync orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Actualizaciones semanales de progreso</strong> - Informes regulares del avance del proyecto
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-vial orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Pruebas continuas y feedback</strong> - Testing constante y ajustes basados en retroalimentación
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-plug orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Integración gradual sin interrupciones</strong> - Implementación que no afecta operaciones actuales
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 4: Optimización -->
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="text-2xl font-bold mb-4 mt-2">Optimización y Entrenamiento</h3>
+                    <h4 class="text-lg orange-accent font-semibold mb-3">Soporte y Acompañamiento</h4>
+                    <p class="text-gray-300 mb-4">
+                        Puesta en marcha del sistema, seguimiento activo, informes mensuales y 
+                        propuestas continuas de mejora para maximizar resultados.
+                    </p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-start">
+                            <i class="fas fa-graduation-cap orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Capacitación del equipo</strong> - Training completo para usar las nuevas herramientas
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-tachometer-alt orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Monitoreo de rendimiento</strong> - Seguimiento continuo de métricas y KPIs
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-tools orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Ajustes y optimizaciones</strong> - Mejoras constantes basadas en datos reales
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-headset orange-accent mt-1 mr-3"></i>
+                            <div>
+                                <strong>Soporte continuo y mantenimiento</strong> - Asistencia técnica permanente y actualizaciones
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologías -->
+    <section class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Nuestras <span class="gradient-text">Tecnologías</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Utilizamos las tecnologías más avanzadas para crear soluciones robustas y escalables.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="metric-card">
+                    <i class="fas fa-brain text-3xl orange-accent mb-3"></i>
+                    <h4 class="font-semibold">Inteligencia Artificial</h4>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-language text-3xl orange-accent mb-3"></i>
+                    <h4 class="font-semibold">NLP</h4>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-network-wired text-3xl orange-accent mb-3"></i>
+                    <h4 class="font-semibold">N8N</h4>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-robot text-3xl orange-accent mb-3"></i>
+                    <h4 class="font-semibold">Machine Learning</h4>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-cloud text-3xl orange-accent mb-3"></i>
+                    <h4 class="font-semibold">Cloud Computing</h4>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-code text-3xl orange-accent mb-3"></i>
+                    <h4 class="font-semibold">APIs Avanzadas</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presencia Internacional -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Presencia <span class="gradient-text">Internacional</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Establecidos en 4 países, brindando soluciones de IA a empresas de toda Latinoamérica y Europa.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="country-card">
+                    <div class="text-4xl mb-4">🇦🇷</div>
+                    <h3 class="text-xl font-bold mb-2">Argentina</h3>
+                    <p class="text-gray-400 text-sm">Oficina Principal</p>
+                </div>
+                
+                <div class="country-card">
+                    <div class="text-4xl mb-4">🇨🇴</div>
+                    <h3 class="text-xl font-bold mb-2">Colombia</h3>
+                    <p class="text-gray-400 text-sm">Oficina Regional</p>
+                </div>
+                
+                <div class="country-card">
+                    <div class="text-4xl mb-4">🇪🇸</div>
+                    <h3 class="text-xl font-bold mb-2">España</h3>
+                    <p class="text-gray-400 text-sm">Oficina Europea</p>
+                </div>
+                
+                <div class="country-card">
+                    <div class="text-4xl mb-4">🇨🇷</div>
+                    <h3 class="text-xl font-bold mb-2">Costa Rica</h3>
+                    <p class="text-gray-400 text-sm">Oficina Centroamérica</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <!-- 
+    <section id="contacto" class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Hablemos de tu <span class="gradient-text">Proyecto</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    ¿Tienes una idea o necesitas ayuda para transformar tu empresa? Estamos aquí para ayudarte.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                 Formulario de Contacto
+                <div class="glass-effect rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6">Envíanos un Mensaje</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Nombre *</label>
+                                <input type="text" class="form-input" placeholder="Tu nombre completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-input" placeholder="tu@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="form-label">Empresa</label>
+                                <input type="text" class="form-input" placeholder="Nombre de tu empresa">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Teléfono</label>
+                                <input type="tel" class="form-input" placeholder="+XX XXX XXX XXX">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Proyecto</label>
+                            <select class="form-select">
+                                <option>Agentes de IA</option>
+                                <option>Automatizaciones</option>
+                                <option>Soluciones a Medida</option>
+                                <option>Consultoría</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Mensaje *</label>
+                            <textarea class="form-textarea" rows="4" placeholder="Cuéntanos sobre tu proyecto o necesidades..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary w-full">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+                
+                
+                 Información de Contacto 
+                <div class="space-y-8">
+                    <div class="glass-effect rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">¿Prefieres Agendar una Reunión?</h3>
+                        <p class="text-gray-300 mb-6">
+                            Agenda una llamada gratuita de 30 minutos para hablar sobre tu proyecto y cómo podemos ayudarte.
+                        </p>
+                        <button onclick="openSchedulingModal()" class="btn-primary w-full">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            Agendar Reunión Gratuita
+                        </button>
+                    </div>
+                    
+                    <div class="glass-effect rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Otras Formas de Contacto</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-orange-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-orange-400"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Email General</div>
+                                    <div class="text-gray-400">info@codeverseai.com</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-orange-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fab fa-whatsapp text-orange-400"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">WhatsApp</div>
+                                    <div class="text-gray-400">Disponible 24/7</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-orange-500 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fab fa-linkedin text-orange-400"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">LinkedIn</div>
+                                    <div class="text-gray-400">@CodeVerseAI</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+    <!-- Contacto -->
+    <section id="contacto" class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Hablemos de tu <span class="gradient-text">Proyecto</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    ¿Tienes una idea o necesitas ayuda para transformar tu empresa? Estamos aquí para ayudarte.
+                </p>
+            </div>
+
+            <!-- Contenedor centrado -->
+            <div class="w-full flex justify-center">
+                <div class="w-2/3">
+                    <div class="glass-effect rounded-2xl p-8 text-center">
+                        <h3 class="text-2xl font-bold mb-6">¿Prefieres Agendar una Reunión?</h3>
+                        <p class="text-gray-300 mb-6">
+                            Agenda una llamada gratuita de 30 minutos para hablar sobre tu proyecto y cómo podemos ayudarte.
+                        </p>
+                        <button onclick="openSchedulingModal()" class="btn-primary w-full mb-8">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            Agendar Reunión Gratuita
+                        </button>
+
+                        <!-- Redes Sociales -->
+                        <div class="mt-6">
+                            <h4 class="text-xl font-semibold mb-4">Síguenos o contáctanos:</h4>
+                            <div class="flex flex-col md:flex-row justify-center gap-4 text-gray-200">
+                                <a href="https://www.tiktok.com/@codeverseai" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
+                                    <i class="fab fa-tiktok fa-2x"></i>
+                                    <span>@codeverseai</span>
+                                </a>
+                                <a href="https://www.instagram.com/codeverseai" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
+                                    <i class="fab fa-instagram fa-2x"></i>
+                                    <span>@codeverseai</span>
+                                </a>
+                                <a href="https://www.youtube.com/@codeverseai" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
+                                    <i class="fab fa-youtube fa-2x"></i>
+                                    <span>@codeverseai</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/codeverseai" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
+                                    <i class="fab fa-linkedin fa-2x"></i>
+                                    <span>@codeverseai</span>
+                                </a>
+                                <a href="mailto:info@codeverseai.com" class="flex items-center gap-2 hover:text-white transition-colors">
+                                    <i class="fas fa-envelope fa-2x"></i>
+                                    <span>info@codeverseai.com</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Fin Redes Sociales -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre nosotros -->
+    <section id="sobre-nosotros" class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <section class="py-20 bg-gray-900">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                            Nuestro <span class="gradient-text">Equipo</span>
+                        </h2>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                            Conoce a los expertos que estan trabajando en hacer realidad tus ideas y prroyectos.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="country-card">
+                            <div class="text-4xl mb-4">🇦🇷</div>
+                            <h3 class="text-xl font-bold mb-2">Antonio</h3>
+                            <p class="text-gray-400 text-sm">Oficina Principal</p>
+                        </div>
+                        
+                        <div class="country-card">
+                            <div class="text-4xl mb-4">🇨🇴</div>
+                            <h3 class="text-xl font-bold mb-2">Alex</h3>
+                            <p class="text-gray-400 text-sm">Oficina Regional</p>
+                        </div>
+                        
+                        <div class="country-card">
+                            <div class="text-4xl mb-4">🇪🇸</div>
+                            <h3 class="text-xl font-bold mb-2">Sergio</h3>
+                            <p class="text-gray-400 text-sm">Oficina Europea</p>
+                        </div>
+                        
+                        <div class="country-card">
+                            <div class="text-4xl mb-4">🇨🇷</div>
+                            <h3 class="text-xl font-bold mb-2">Coralia</h3>
+                            <p class="text-gray-400 text-sm">Oficina Centroamérica</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+    <!-- CTA Final -->
+    <section class="hero-bg py-20 relative overflow-hidden">
+        <div class="tech-grid"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    ¿Listo para transformar tu <span class="gradient-text">empresa</span>?
+                </h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Ya son más de 15 las empresas que han transformado su operativa con IA gracias a nosotros. 
+                    La próxima podría ser la tuya.
+                </p>
+                <button onclick="openSchedulingModal()" class="btn-primary text-lg px-8 py-4">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    Da hoy el primer paso hacia el futuro
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="text-2xl font-bold">
+                            <span class="text-white">CODE</span><span class="gradient-text">VERSE</span>
+                        </div>
+                        <div class="text-sm text-gray-400">AI</div>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Transformando empresas con Inteligencia Artificial desde 2023.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Servicios</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#servicios" class="hover:text-orange-400 transition-colors">Agentes de IA</a></li>
+                        <li><a href="#servicios" class="hover:text-orange-400 transition-colors">Automatizaciones</a></li>
+                        <li><a href="#servicios" class="hover:text-orange-400 transition-colors">Soluciones a Medida</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Empresa</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#sobre-nosotros" class="hover:text-orange-400 transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#proceso" class="hover:text-orange-400 transition-colors">Cómo Trabajamos</a></li>
+                        <li><a href="#contacto" class="hover:text-orange-400 transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-orange-400 transition-colors">Política de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition-colors">Términos y Condiciones</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition-colors">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2024 CodeVerse AI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scheduling Modal -->
+    <div id="schedulingModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeSchedulingModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div id="schedulingStep1" class="scheduling-step">
+                <h2 class="text-3xl font-bold mb-6 text-center">
+                    Agendar <span class="gradient-text">Reunión</span>
+                </h2>
+                
+                <!-- Meeting Type Selection -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Selecciona el tipo de reunión:</h3>
+                    <div class="space-y-4">
+                        <div class="meeting-type-card" onclick="selectMeetingType('consultation')">
+                            <h4>Consulta Inicial Gratuita</h4>
+                            <p>Análisis de necesidades y propuesta preliminar para tu empresa.</p>
+                            <div class="duration">⏱️ 30 minutos • Gratuita</div>
+                        </div>
+                        
+                        <div class="meeting-type-card" onclick="selectMeetingType('technical')">
+                            <h4>Evaluación Técnica</h4>
+                            <p>Revisión detallada de sistemas actuales y requerimientos técnicos.</p>
+                            <div class="duration">⏱️ 45 minutos • Gratuita</div>
+                        </div>
+                        
+                        <div class="meeting-type-card" onclick="selectMeetingType('implementation')">
+                            <h4>Seguimiento de Proyecto</h4>
+                            <p>Reunión para clientes actuales o seguimiento de proyectos en curso.</p>
+                            <div class="duration">⏱️ 30 minutos</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Calendar -->
+                <!--
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button class="calendar-nav" onclick="changeMonth(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h3 id="currentMonth" class="text-xl font-semibold">Enero 2024</h3>
+                        <button class="calendar-nav" onclick="changeMonth(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                    </div>
+                </div>
+                -->
+                 
+                <div class="calendly-inline-widget" data-url="https://calendly.com/codeverseaivoz/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=101024&text_color=ffffff&primary_color=f97316" style="min-width:320px;height:700px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                
+                <!-- Time Slots -->
+                <div id="timeSlots" class="time-slots" style="display: none;">
+                    <h4 class="text-lg font-semibold mb-4">Horarios disponibles:</h4>
+                    <div id="timeSlotsContainer">
+                        <!-- Time slots will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="flex justify-end mt-6">
+                    <button id="continueToForm" class="btn-primary" onclick="showContactForm()" style="display: none;">
+                        Continuar con los datos
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+            </div>
+            
+            <!-- Contact Form Step -->
+            <div id="schedulingStep2" class="scheduling-step" style="display: none;">
+                <h2 class="text-3xl font-bold mb-6 text-center">
+                    Confirma tu <span class="gradient-text">Reunión</span>
+                </h2>
+                
+                <!-- Meeting Summary -->
+                <div class="glass-effect rounded-lg p-4 mb-6">
+                    <div class="flex items-center justify-between text-sm">
+                        <div>
+                            <div class="font-semibold" id="selectedMeetingType">Consulta Inicial Gratuita</div>
+                            <div class="text-gray-400" id="selectedDateTime">Martes, 15 de Enero 2024 • 10:00 AM</div>
+                        </div>
+                        <button onclick="goBackToCalendar()" class="text-orange-400 hover:text-orange-300">
+                            <i class="fas fa-edit mr-1"></i>Cambiar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <form id="meetingForm" class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label class="form-label">Nombre completo *</label>
+                            <input type="text" class="form-input" placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-input" placeholder="tu@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label class="form-label">Teléfono</label>
+                            <input type="tel" class="form-input" placeholder="+XX XXX XXX XXX">
+                        </div>
+                        <div class="form-group relative">
+                            <label class="form-label">País de residencia</label>
+                            <select class="form-input country-select" required>
+                                <option value="">Selecciona tu país</option>
+                                <option value="AR">Argentina</option>
+                                <option value="MX">México</option>
+                                <option value="ES">España</option>
+                                <option value="CO">Colombia</option>
+                                <option value="CL">Chile</option>
+                                <option value="PE">Perú</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="VE">Venezuela</option>
+                                <option value="UY">Uruguay</option>
+                                <option value="EC">Ecuador</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Empresa</label>
+                        <input type="text" class="form-input" placeholder="Nombre de tu empresa">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Cargo/Posición</label>
+                        <input type="text" class="form-input" placeholder="Tu cargo en la empresa">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Qué te gustaría discutir en la reunión?</label>
+                        <textarea class="form-textarea" rows="3" placeholder="Cuéntanos brevemente sobre tus necesidades o proyecto..."></textarea>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <button type="button" onclick="goBackToCalendar()" class="btn-secondary flex-1">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Volver
+                        </button>
+                        <button type="submit" class="btn-primary flex-1">
+                            <i class="fas fa-check mr-2"></i>
+                            Confirmar Reunión
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            
+            <!-- Confirmation Step -->
+            <div id="schedulingStep3" class="scheduling-step" style="display: none;">
+                <div class="confirmation-card">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check text-2xl text-green-400"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4">
+                        ¡Reunión <span class="gradient-text">Confirmada</span>!
+                    </h2>
+                    <p class="text-gray-300 mb-6">
+                        Hemos enviado los detalles de la reunión a tu email junto con el enlace de la videollamada.
+                    </p>
+                    
+                    <div class="glass-effect rounded-lg p-4 mb-6 text-left">
+                        <h4 class="font-semibold mb-2">Detalles de la reunión:</h4>
+                        <div class="space-y-2 text-sm text-gray-300">
+                            <div><i class="fas fa-calendar orange-accent mr-2"></i><span id="confirmDateTime">Martes, 15 de Enero 2024 • 10:00 AM</span></div>
+                            <div><i class="fas fa-clock orange-accent mr-2"></i><span id="confirmDuration">30 minutos</span></div>
+                            <div><i class="fas fa-video orange-accent mr-2"></i>Enlace de Zoom enviado por email</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <p class="text-sm text-gray-400">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Revisa tu email (incluyendo spam) para el enlace de la reunión y los detalles completos.
+                        </p>
+                        <button onclick="closeSchedulingModal()" class="btn-primary">
+                            <i class="fas fa-times mr-2"></i>
+                            Cerrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables for scheduling
+        let currentDate = new Date();
+        let selectedDate = null;
+        let selectedTime = null;
+        let selectedMeetingTypeData = null;
+        
+        const meetingTypes = {
+            consultation: {
+                title: 'Consulta Inicial Gratuita',
+                duration: '30 minutos',
+                description: 'Análisis de necesidades y propuesta preliminar para tu empresa.'
+            },
+            technical: {
+                title: 'Evaluación Técnica',
+                duration: '45 minutos',
+                description: 'Revisión detallada de sistemas actuales y requerimientos técnicos.'
+            },
+            implementation: {
+                title: 'Seguimiento de Proyecto',
+                duration: '30 minutos',
+                description: 'Reunión para clientes actuales o seguimiento de proyectos en curso.'
+            }
+        };
+        
+        const monthNames = [
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        ];
+        
+        const dayNames = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+        
+        // Available time slots (in 24-hour format)
+        const availableTimeSlots = [
+            "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+            "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"
+        ];
+
+        // Modal functions
+        function openSchedulingModal() {
+            document.getElementById('schedulingModal').classList.add('active');
+            generateCalendar();
+        }
+
+        function closeSchedulingModal() {
+            document.getElementById('schedulingModal').classList.remove('active');
+            resetSchedulingForm();
+        }
+
+        function resetSchedulingForm() {
+            // Reset all form data
+            selectedDate = null;
+            selectedTime = null;
+            selectedMeetingTypeData = null;
+            
+            // Reset steps
+            document.getElementById('schedulingStep1').style.display = 'block';
+            document.getElementById('schedulingStep2').style.display = 'none';
+            document.getElementById('schedulingStep3').style.display = 'none';
+            
+            // Reset UI elements
+            document.getElementById('timeSlots').style.display = 'none';
+            document.getElementById('continueToForm').style.display = 'none';
+            
+            // Clear form
+            document.getElementById('meetingForm').reset();
+            
+            // Clear selections
+            document.querySelectorAll('.meeting-type-card.selected').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelectorAll('.calendar-day.selected').forEach(day => {
+                day.classList.remove('selected');
+            });
+            document.querySelectorAll('.time-slot.selected').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+        }
+
+        // Meeting type selection
+        function selectMeetingType(type) {
+            // Remove previous selection
+            document.querySelectorAll('.meeting-type-card.selected').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selection to clicked card
+            event.target.closest('.meeting-type-card').classList.add('selected');
+            selectedMeetingTypeData = meetingTypes[type];
+        }
+
+        // Calendar functions
+        function generateCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const currentMonthElement = document.getElementById('currentMonth');
+            
+            // Clear previous calendar
+            grid.innerHTML = '';
+            
+            // Set month display
+            currentMonthElement.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            
+            // Add day headers
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day-header';
+                dayHeader.textContent = day;
+                grid.appendChild(dayHeader);
+            });
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDayOfWeek = firstDay.getDay();
+            
+            // Add empty cells for days before month starts
+            for (let i = 0; i < startingDayOfWeek; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day disabled';
+                grid.appendChild(emptyDay);
+            }
+            
+            // Add days of the month
+            const today = new Date();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                
+                const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                
+                // Mark today
+                if (dayDate.toDateString() === today.toDateString()) {
+                    dayElement.classList.add('today');
+                }
+                
+                // Disable past dates and weekends
+                if (dayDate < today || dayDate.getDay() === 0 || dayDate.getDay() === 6) {
+                    dayElement.classList.add('disabled');
+                } else {
+                    dayElement.onclick = () => selectDate(dayDate, dayElement);
+                }
+                
+                grid.appendChild(dayElement);
+            }
+        }
+
+        function changeMonth(direction) {
+            currentDate.setMonth(currentDate.getMonth() + direction);
+            generateCalendar();
+            
+            // Hide time slots if showing
+            document.getElementById('timeSlots').style.display = 'none';
+            document.getElementById('continueToForm').style.display = 'none';
+            selectedDate = null;
+            selectedTime = null;
+        }
+
+        function selectDate(date, element) {
+            // Remove previous date selection
+            document.querySelectorAll('.calendar-day.selected').forEach(day => {
+                day.classList.remove('selected');
+            });
+            
+            // Select new date
+            element.classList.add('selected');
+            selectedDate = date;
+            
+            // Show time slots
+            showTimeSlots();
+        }
+
+        function showTimeSlots() {
+            const timeSlotsContainer = document.getElementById('timeSlotsContainer');
+            const timeSlotsDiv = document.getElementById('timeSlots');
+            
+            // Clear previous time slots
+            timeSlotsContainer.innerHTML = '';
+            
+            // Generate time slots
+            availableTimeSlots.forEach(time => {
+                const timeSlot = document.createElement('div');
+                timeSlot.className = 'time-slot';
+                timeSlot.textContent = formatTime(time);
+                timeSlot.onclick = () => selectTime(time, timeSlot);
+                timeSlotsContainer.appendChild(timeSlot);
+            });
+            
+            // Show time slots
+            timeSlotsDiv.style.display = 'block';
+            
+            // Reset time selection
+            selectedTime = null;
+            document.getElementById('continueToForm').style.display = 'none';
+        }
+
+        function selectTime(time, element) {
+            // Remove previous time selection
+            document.querySelectorAll('.time-slot.selected').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+            
+            // Select new time
+            element.classList.add('selected');
+            selectedTime = time;
+            
+            // Show continue button
+            document.getElementById('continueToForm').style.display = 'block';
+        }
+
+        function formatTime(time24) {
+            const [hour, minute] = time24.split(':');
+            const hour12 = hour % 12 || 12;
+            const ampm = hour < 12 ? 'AM' : 'PM';
+            return `${hour12}:${minute} ${ampm}`;
+        }
+
+        function formatDate(date) {
+            const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+            const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            
+            return `${days[date.getDay()]}, ${date.getDate()} de ${months[date.getMonth()]} ${date.getFullYear()}`;
+        }
+
+        // Form functions
+        function showContactForm() {
+            if (!selectedMeetingTypeData || !selectedDate || !selectedTime) {
+                alert('Por favor selecciona el tipo de reunión, fecha y hora antes de continuar.');
+                return;
+            }
+            
+            // Update meeting summary
+            document.getElementById('selectedMeetingType').textContent = selectedMeetingTypeData.title;
+            document.getElementById('selectedDateTime').textContent = `${formatDate(selectedDate)} • ${formatTime(selectedTime)}`;
+            
+            // Show contact form step
+            document.getElementById('schedulingStep1').style.display = 'none';
+            document.getElementById('schedulingStep2').style.display = 'block';
+        }
+
+        function goBackToCalendar() {
+            document.getElementById('schedulingStep2').style.display = 'none';
+            document.getElementById('schedulingStep1').style.display = 'block';
+        }
+
+        // Form submission
+        document.getElementById('meetingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show confirmation
+            document.getElementById('confirmDateTime').textContent = `${formatDate(selectedDate)} • ${formatTime(selectedTime)}`;
+            document.getElementById('confirmDuration').textContent = selectedMeetingTypeData.duration;
+            
+            document.getElementById('schedulingStep2').style.display = 'none';
+            document.getElementById('schedulingStep3').style.display = 'block';
+            
+            // Here you would typically send the form data to your backend
+            console.log('Meeting scheduled:', {
+                type: selectedMeetingTypeData,
+                date: selectedDate,
+                time: selectedTime,
+                formData: new FormData(this)
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message (you would replace this with actual form submission)
+            alert('¡Mensaje enviado exitosamente! Te contactaremos pronto.');
+            this.reset();
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Add more particles dynamically
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            
+            const particlesContainer = document.querySelector('.tech-particles');
+            if (particlesContainer) {
+                particlesContainer.appendChild(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                    }
+                }, 10000);
+            }
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+
+        // Initialize calendar when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCalendar();
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('schedulingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSchedulingModal();
+            }
+        });
+    </script>
+</body>
+</html>
